@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include selco_foundation *.css
+recursive-include selco_foundation *.csv
+recursive-include selco_foundation *.html
+recursive-include selco_foundation *.ico
+recursive-include selco_foundation *.js
+recursive-include selco_foundation *.json
+recursive-include selco_foundation *.md
+recursive-include selco_foundation *.png
+recursive-include selco_foundation *.py
+recursive-include selco_foundation *.svg
+recursive-include selco_foundation *.txt
+recursive-exclude selco_foundation *.pyc
