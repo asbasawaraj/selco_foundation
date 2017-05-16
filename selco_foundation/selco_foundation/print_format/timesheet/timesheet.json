@@ -1,0 +1,22 @@
+{
+ "align_labels_left": 0, 
+ "creation": "2017-05-16 14:45:00.333024", 
+ "custom_format": 1, 
+ "disabled": 0, 
+ "doc_type": "Timesheet", 
+ "docstatus": 0, 
+ "doctype": "Print Format", 
+ "font": "Default", 
+ "html": "{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}\n    {% if letter_head and not no_letterhead %}\n    <div class=\"letter-head\">{{ letter_head }}</div>\n    {% endif %}\n    {%- if doc.meta.is_submittable and doc.docstatus==0-%}\n    <div>\n\n    {%- endif -%}\n    {%- if doc.meta.is_submittable and doc.docstatus==2-%}\n    <div class=\"alert alert-danger text-center\">\n        <h4 style=\"margin: 0px;\">{{ _(\"CANCELLED\") }}</h4></div>\n    {%- endif -%}\n    {% if max_pages > 1 %}\n    <p class=\"text-right\">{{ _(\"Page #{0} of {1}\").format(page_num, max_pages) }}</p>\n    {% endif %}\n{%- endmacro -%}\n\n\n<img src=\"/files/selco_newest.jpg\" height=\"120\" width=\"1000\">\n<hr>\n<small>\n{{ add_header(0,1,doc,letter_head, no_letterhead) }}\n<big>\n<h2><p class=\"text-center\"><b><u>{{ _(\"TIMESHEET\") }}</u></b></p></h2><br>\n</big>\n\n<table BORDER class=\"boldtable \"style=\"width: 100%;\">\n\n<tr>\n    <td style=\"width: 50%;\"><b>Employee Name :</b> {{doc.employee_name}}</td>\n    <td style=\"width: 50%;\"><b>Employee ID : </b>{{doc.employee}}</td>\n</tr>\n</table>\n<br>\n<br>\n\n<table class=\"boldtable table-condensed table-hover table-bordered\"> \n        <tr>\n            <th>Date</th>\n            <th>First half of the day</th>\n            <th>Second half of the day</th>\n          </tr>\n\n        {%- for row in doc.time_logs -%}\n        <tr>\n            <td style=\"width: 10%;\">{{frappe.utils.formatdate(doc.posting_date,\"dd-MM-yyyy\")}}</td>\n            <td style=\"width: 45%;\"><b>{{ row.first_half_of_the_day or '' }}</td>\n            <td style=\"width: 45%;\"><b>{{ row.second_half__of_the_day or '' }}</td>\n          </tr>\n        {%- endfor -%}\n</table>\n\n\n", 
+ "idx": 0, 
+ "line_breaks": 0, 
+ "modified": "2017-05-16 16:13:48.855670", 
+ "modified_by": "Administrator", 
+ "module": "Selco Foundation", 
+ "name": "Timesheet", 
+ "owner": "Administrator", 
+ "print_format_builder": 0, 
+ "print_format_type": "Server", 
+ "show_section_headings": 0, 
+ "standard": "Yes"
+}
